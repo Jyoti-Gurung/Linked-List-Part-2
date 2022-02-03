@@ -14,9 +14,14 @@ using namespace std;
 void add();
 void print(Node* next);
 void remove();
-void average();
+void average( Node* next);
 
+//starter node for everything
 Node* head = NULL;
+
+//used to add up GPA of all students, and tracker to track people
+float averageGpa = 0;
+int tracker = 0;
 
 int main() {
 
@@ -28,16 +33,19 @@ int main() {
 
     switch(action){
       case 1:
-      add();
+        add();
         break;
       case 2:
-      cout << endl << "Student info: " << endl;
-      print(head);
+        cout << endl << "Student info: " << endl;
+        print(head);
         break;
       case 3:
         remove();
         break;
       case 4:
+        average(head);
+        averageGpa = averageGpa/tracker;
+        cout << "Average Gpa: " << averageGpa <<endl;
         break;
       case 5:
         action = 0;
@@ -60,7 +68,7 @@ void add() {
   char firstName[16];
   char lastName[16];
   int id;
-  int gpa;
+  float gpa;
   cin >> firstName;
   cin >> lastName;
   cin >> id;
@@ -70,6 +78,9 @@ void add() {
   if (current == NULL) {
     head = new Node();
     head->setId(id);
+    head->setGpa(gpa);
+    head->setFirstName(firstName);
+    head->setLastName(lastName);
   }
   else {
     while (current->getNext() != NULL) {
@@ -83,9 +94,12 @@ void add() {
 
 //go through the linked list, print out students info
 void print(Node* next) {
-
   if (next != NULL) {
-    cout << "Id: " <<next->getId() << endl;
+    cout 
+    << "First Name: " << next->getFirstName() << endl
+    << "Last Name: " << next->getLastName() << endl
+    << "Id: " << next->getId() << endl 
+    << "Gpa: " << next->getGpa() << endl;
     print(next->getNext());
   }
 }
@@ -99,7 +113,11 @@ void remove() {
 
 }
 
-//loop through the linked list and add the GPA to a int to find the average
-void average() {
-
+//loop through the linked list and add the GPA to a int (averageGpa) to find the average
+void average(Node* next) {
+  if (next != NULL) {
+    averageGpa += next->getGpa();
+    tracker++;
+    average(next->getNext());
+  }
 }

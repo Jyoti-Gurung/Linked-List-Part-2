@@ -20,11 +20,17 @@ public:
   int getId();
   void setGpa(float newGpa);
   float getGpa();
+  void setFirstName(char input[]);
+  char* getFirstName();
+  void setLastName(char input[]);
+  char* getLastName();
 private:
   //Variables
   Student* student;
   Node* next;
   int id;
   float gpa;
+  char firstName[16];
+  char lastName[16];
 };
 #endif

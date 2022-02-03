@@ -54,3 +54,31 @@ void Node::setGpa(float newGpa) {
 float Node::getGpa() {
   return gpa;
 }
+
+void Node::setFirstName(char input[]) {
+  for (int i = 0; i < strlen(input); i++) {
+    firstName[i] = input[i];
+  }
+}
+
+char* Node::getFirstName() {
+  char* str = firstName;
+  for (int i = 0; i < strlen(firstName); i++) {
+    str[i] = firstName[i];
+  }
+  return str;
+}
+
+void Node::setLastName(char input[]) {
+  for (int i = 0; i < strlen(input); i++) {
+    lastName[i] = input[i];
+  }
+}
+
+char* Node::getLastName() {
+  char* str = lastName;
+  for (int i = 0; i < strlen(lastName); i++) {
+    str[i] = lastName[i];
+  }
+  return str;
+}
