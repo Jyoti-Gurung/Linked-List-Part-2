@@ -7,17 +7,24 @@ using namespace std;
 
 class Node {
 public:
-  Node(Student*);
+  Node();
   ~Node(); //Destructor
   //Setters
   void setStudent(Student* newStudent);
-  void setNext(Node*);
+  void setNext(Node* newNext);
   //Getters
   Student* getStudent();
   Node* getNext();
+  //variables
+  void setId(int newId);
+  int getId();
+  void setGpa(float newGpa);
+  float getGpa();
 private:
   //Variables
   Student* student;
   Node* next;
+  int id;
+  float gpa;
 };
 #endif

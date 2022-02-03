@@ -12,9 +12,11 @@ using namespace std;
 
 //set up the functions, up here so I can use it in main, since they are written below main
 void add();
-void print();
+void print(Node* next);
 void remove();
 void average();
+
+Node* head = NULL;
 
 int main() {
 
@@ -29,6 +31,8 @@ int main() {
       add();
         break;
       case 2:
+      cout << endl << "Student info: " << endl;
+      print(head);
         break;
       case 3:
         remove();
@@ -62,11 +66,28 @@ void add() {
   cin >> id;
   cin >> gpa;
 
+  Node* current = head;
+  if (current == NULL) {
+    head = new Node();
+    head->setId(id);
+  }
+  else {
+    while (current->getNext() != NULL) {
+      current = current->getNext();
+    }
+    current->setNext(new Node());
+    current->getNext()->setId(id);
+  }
+  
 }
 
 //go through the linked list, print out students info
-void print() {
+void print(Node* next) {
 
+  if (next != NULL) {
+    cout << "Id: " <<next->getId() << endl;
+    print(next->getNext());
+  }
 }
 
 //go the linked list, and remove if the ID matches with the entered ID

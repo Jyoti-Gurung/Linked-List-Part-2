@@ -11,8 +11,7 @@
 using namespace std;
 
 //Constructor
-Node::Node(Student* newStudent) {
-  student = newStudent;
+Node::Node() {
   next = NULL;
 }
 
@@ -37,4 +36,21 @@ Student* Node::getStudent() {
 
 Node* Node::getNext() {
     return next;
+}
+
+//Variables
+void Node::setId(int newId) {
+  id = newId;
+}
+
+int Node::getId() {
+  return id;
+}
+
+void Node::setGpa(float newGpa) {
+  gpa = newGpa;
+}
+
+float Node::getGpa() {
+  return gpa;
 }
